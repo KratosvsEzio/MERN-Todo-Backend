@@ -4,12 +4,9 @@ const path = require("path");
 
 // Routes
 const todosRoutes = require('./Routes/todos');
+require('./Db');
 
 const app = express();
-
-require('./Db');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({'extended':'false'}));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -23,6 +20,9 @@ app.use((req, res, next) => {
   );
   next();
 });
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({'extended':'false'}));
+
 
 app.use('/api/todos',todosRoutes);
 
