@@ -40,23 +40,6 @@ routes.post("", (req, res, next) => {
 
 });
 
-// Create New Todo data Route
-routes.post("", (req, res, next) => {
-  
-  const todo = new Todo(req.body)
-  
-  todo.save().then( (results) => {
-    console.log('res', results);
-    res.status(201).json({
-      message: "todo created successfully!",
-      data: results
-    });
-  }).catch( err => {
-    console.log(err.message)
-  });
-
-});
-
 // Delete Todo data Route
 routes.delete("/:id", (req, res, next) => {
   
